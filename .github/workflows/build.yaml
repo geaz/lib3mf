@@ -1,0 +1,47 @@
+name: Lib3MFNative
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build lib3mf
+        uses: ashutoshvarma/action-cmake-build@v1
+        with:
+          build-dir: ./build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: "Lib3MF-linux64"
+          path: ./build
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build lib3mf
+        uses: ashutoshvarma/action-cmake-build@v1
+        with:
+          build-dir: ./build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: "Lib3MF-mac64"
+          path: ./build
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build lib3mf
+        uses: ashutoshvarma/action-cmake-build@v1
+        with:
+          build-dir: ./build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: "Lib3MF-win64"
+          path: ./build
